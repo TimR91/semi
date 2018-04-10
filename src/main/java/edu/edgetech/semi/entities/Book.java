@@ -1,13 +1,38 @@
 package edu.edgetech.semi.entities;
 
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
 
+@Entity
+@Table(name = "Tim")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @Version
+    private Integer version;
     private String title;
     private String author;
     private int pages;
     private Date returnDate;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
 
     public String getTitle() {
         return title;
@@ -32,6 +57,11 @@ public class Book {
     public void setPages(int pages) {
         this.pages = pages;
     }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
     public void setReturnDate(){
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 14);
